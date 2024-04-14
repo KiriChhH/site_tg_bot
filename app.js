@@ -7,7 +7,6 @@ let products = [
 ];
 */
 
-
 // Корзина
 let cart = [];
 let products = [];
@@ -39,10 +38,11 @@ function displayProducts() {
     productElement.className = 'grid place-content-center bg-white rounded overflow-hidden shadow-lg p-2';
     productElement.innerHTML = `
       <img class="h-72 w-72 p-3" src="${product.image1}" alt="${product.name}">
-      <div class="px-6 py-4">
+      <div class="px-6 py-4 grid grid-cols-1">
         <div class="font-bold text-xl mb-2">${product.name}</div>
         <p class="text-gray-700 text-base">Цена: ${product.price} руб.</p>
         <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700" onclick="showProductDetails(${product.id})">Подробнее</button>
+        <button id='mAddBtn(${product.id})' class="max-w-2 mt-4 px-4 py-2 max-w-8 bg-green-500 text-white rounded hover:bg-green-700" onclick="addToCartFromMain(${product.id})">Добавить в корзину</button>
       </div>
     `;
     productsContainer.appendChild(productElement);
@@ -82,6 +82,14 @@ function addToCart(productId) {
    <p class="mt-4">${product.description}</p>
    <button class="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="addToCart(${product.id})">Товар успешно добавлен</button>
   `;
+  updateCart();
+  saveCart();
+}
+
+function addToCartFromMain(productId){
+  const product = products.find(p => p.id === productId);
+  cart.push(product);
+  document.getElementById(`mAddBtn(${product.id})`).textContent = "Товар добавлен";
   updateCart();
   saveCart();
 }
