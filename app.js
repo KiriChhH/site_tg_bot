@@ -167,24 +167,19 @@ document.getElementById('closeModalCart').addEventListener('click', () => {
 });
 
 // tg_script //
-let tg = window.Telegram.WebApp;
-tg.expand();
-tg.MainButton.color = "#34C924";
-tg.MainButton.text = "Подтвердить";
-
-let btn_open = document.getElementById("togglePayment");
-
-btn_open.addEventListener('click', function(){
-  tg.MainButton.show()
-});
-
-Telegram.WebApp.onEvent('mainButtonClicked', function(){
-  tg.sendData(popupCost.value);
-});
-
-popupClose.addEventListener("click", (e) => {
-  e.preventDefault();
-  popup.classList.remove("popup--open");
-  body.classList.remove("lock");
-  tg.MainButton.hide()
-});
+ const tg = window.Telegram.WebApp;
+tg.MainButton.show();
+        tg.MainButton.setText("Оплатить");
+        tg.MainButton.onClick(() => {
+            console.log("start");
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("X-Custom-Info", "getOpenInvoiceUrl");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    tg.openInvoice(xhr.responseText);
+                }
+            };
+            xhr.send();
+        });
