@@ -170,9 +170,9 @@ document.getElementById('closeModalCart').addEventListener('click', () => {
 const tg = window.Telegram.WebApp;
 
 document.getElementById('BtnPurchase').addEventListener('click', () => {
-  tg.sendData(cart);
+  tg.sendData(JSON.stringify(cart));
 });
 
 document.getElementById('togglePayment').addEventListener('click', () =>{
-  tg.sendData(cart);
+  tg.sendData(JSON.stringify(cart));
 });
