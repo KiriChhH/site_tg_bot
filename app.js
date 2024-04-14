@@ -172,7 +172,7 @@ tg.expand();
 tg.MainButton.color = "#34C924";
 tg.MainButton.text = "Подтвердить";
 
-let btn_open = document.getElementById("order");
+let btn_open = document.getElementById("togglePayment");
 
 btn_open.addEventListener('click', function(){
   tg.MainButton.show()
