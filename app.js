@@ -165,3 +165,26 @@ document.getElementById('closeModalCart').addEventListener('click', () => {
   document.getElementById('cart').classList.add('hidden');
   document.body.classList.remove('overflow-hidden');
 });
+
+// tg_script //
+let tg = window.Telegram.WebApp;
+tg.expand();
+tg.MainButton.color = "#34C924";
+tg.MainButton.text = "Подтвердить";
+
+let btn_open = document.getElementById("order");
+
+btn_open.addEventListener('click', function(){
+  tg.MainButton.show()
+});
+
+Telegram.WebApp.onEvent('mainButtonClicked', function(){
+  tg.sendData(popupCost.value);
+});
+
+popupClose.addEventListener("click", (e) => {
+  e.preventDefault();
+  popup.classList.remove("popup--open");
+  body.classList.remove("lock");
+  tg.MainButton.hide()
+});
