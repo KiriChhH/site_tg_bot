@@ -1,12 +1,3 @@
-/*
-let products = [
-  { id: 1, name: 'iPhone 13', price: 80000, image: 'https://opt-milena.ru/upload/iblock/ffa/4byd2713w5foug0k40xm38e15f1ujyvz.jpg',  description: 'Жопы'},
-  { id: 2, name: 'Samsung Galaxy S21', price: 70000, image: '',  description: 'Аываы' },
-  { id: 3, name: 'Google Pixel 6', price: 60000, image: '',  description: 'фывфыв' },
-  // Добавить из БД
-];
-*/
-
 // Корзина
 let cart = [];
 let products = [];
